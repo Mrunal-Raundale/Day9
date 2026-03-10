@@ -18,7 +18,7 @@ app.use(express.static("./public"))
  * -create new note and save data in mongodb
  * -req.body = {title,description}
  */
-app.post("/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.post("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
   const { title, description } = req.body;
 
   const note = await noteModel.create({
@@ -37,7 +37,7 @@ app.post("/api/notes", async (req, res) => {/*Removed http://localhost:3000 beca
  * -Fetch all the notes data from mongodb and send them in response
  */
 
-app.get("/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.get("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
   const notes = await noteModel.find();
 
   res.status(200).json({
@@ -51,7 +51,7 @@ app.get("/api/notes", async (req, res) => {/*Removed http://localhost:3000 becau
  * Delete note from id from req.params
  */
 
-app.delete("/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.delete("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
   const id = req.params.id;
   await noteModel.findByIdAndDelete(id);
 
@@ -66,7 +66,7 @@ app.delete("/api/notes/:id", async (req, res) => {/*Removed http://localhost:300
  * -req.body = {description}
  */
 
-app.patch("/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.patch("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
     const id = req.params.id
     const {description} = req.body
 
