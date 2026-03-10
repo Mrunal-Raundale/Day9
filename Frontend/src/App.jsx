@@ -25,7 +25,7 @@ function App() {
   ])
 
   function fetchNotes(){
-    axios.get('http://localhost:3000/api/notes')
+    axios.get('https://day9-des7.onrender.com/api/notes') /*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
       .then((res)=>{
        setNotes(res.data.notes)
       })
@@ -43,7 +43,7 @@ function App() {
 
     console.log(title.value,description.value);
 
-    axios.post("http://localhost:3000/api/notes",{
+    axios.post("https://day9-des7.onrender.com/api/notes",{ /*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
       title:title.value,
       description:description.value 
     })
@@ -55,7 +55,7 @@ function App() {
   }
 
   function handleDeleteNote(noteId){
-    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    axios.delete("https://day9-des7.onrender.com/api/notes/"+noteId) /*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
     .then(res=>{
       console.log(res.data);
       fetchNotes()

@@ -18,7 +18,7 @@ app.use(express.static("./public"))
  * -create new note and save data in mongodb
  * -req.body = {title,description}
  */
-app.post("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.post("/api/notes", async (req, res) => {
   const { title, description } = req.body;
 
   const note = await noteModel.create({
@@ -37,7 +37,7 @@ app.post("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Remo
  * -Fetch all the notes data from mongodb and send them in response
  */
 
-app.get("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.get("/api/notes", async (req, res) => {
   const notes = await noteModel.find();
 
   res.status(200).json({
@@ -51,7 +51,7 @@ app.get("https://day9-des7.onrender.com/api/notes", async (req, res) => {/*Remov
  * Delete note from id from req.params
  */
 
-app.delete("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.delete("/api/notes/:id", async (req, res) => {
   const id = req.params.id;
   await noteModel.findByIdAndDelete(id);
 
@@ -66,7 +66,7 @@ app.delete("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {
  * -req.body = {description}
  */
 
-app.patch("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {/*Removed http://localhost:3000 because it runs locally but needs to be updated for the deployed URL (https://day9-des7.onrender.com) */
+app.patch("/api/notes/:id", async (req, res) => {
     const id = req.params.id
     const {description} = req.body
 
@@ -81,8 +81,10 @@ app.patch("https://day9-des7.onrender.com/api/notes/:id", async (req, res) => {/
 
 
 
-app.use("*name", (req,res) => {
-  res.sendFile(path.join(__dirname,"..","/public/index.html"))
-})
+  app.use("*name", (req,res) => {
+    res.sendFile(path.join(__dirname,"..","/public/index.html"))
+  })
+ 
+
 
 module.exports = app;
